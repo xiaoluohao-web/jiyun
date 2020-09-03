@@ -1,26 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-
+// 默认导入目录下的 index.vue 文件，等价于 ./views/login/index.vue
+import Index from "../views/index"
+import Layout from "../components/Layout"
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path : "/",
+    name : "index",
+    component : Index
   },
   {
-    path: "/about",
-    name: "About",
-    component: () =>
-      import( "../views/About.vue")
+    path : "/layout",
+    component : Layout
   }
+ 
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
   routes
 });
 
