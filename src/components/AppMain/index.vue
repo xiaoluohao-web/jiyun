@@ -22,6 +22,7 @@ export default {
 <style scoped>
 .main{
     padding:10px;
+    height: 100%;
 }
 
 

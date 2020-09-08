@@ -39,26 +39,27 @@ export default {
         }
     }
   },
-  methods: {
+ methods: {
     submitForm(formName){
         this.$refs[formName].validate((valid) =>{
             console.log(valid);
             if(valid){
                 //调用登录接口
-                loginApi.login(this.form.name,this.form.pass).then(res=>{
+                loginApi.wxLogin(this.form).then(res=>{
                     console.log(res)
-                    const code = res.data.data.code;
+                    const code = res.data.code;
                     if(code == 200){
                         //获取token
-                        const token = res.data.data.data.token;
+                        const token = res.data.data.remember_token;
                         //吧token存储到本地
-                        localStorage.setItem("token",token);
-                        //获取用户信息
-                        loginApi.getUserInfo().then(res=>{
-                             const resp = res.data.data;
+                        localStorage.setItem("yy_token",token);
+                        // //获取用户信息
+                        loginApi.wxInfo().then(res=>{
+                            console.log(res)
+                             const resp = res.data;
                             if(resp.code == 200){
                                 //将获取到的用户信息保存到本地
-                                localStorage.setItem("info",JSON.stringify(resp.data));
+                                localStorage.setItem("jy_info",JSON.stringify(resp.rows));
                                 //跳转到首页
                                 this.$router.push({path : "/"})
                             }else{
@@ -96,7 +97,6 @@ export default {
   height: 100%;
   position: absolute;
   background: url("http://mengxuegu.com:9999/img/login.b665435f.jpg");
-  background-size: 100%;
 }
 .login-form {
   padding: 30px 50px 30px 30px;

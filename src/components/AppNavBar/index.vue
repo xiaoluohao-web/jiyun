@@ -28,28 +28,30 @@
         <i class="el-icon-user"></i>
         <span slot="title">员工管理</span>
       </el-menu-item>
+      <el-menu-item index="/user">
+        <i class="el-icon-user"></i>
+        <span slot="title">用户列表</span>
+      </el-menu-item>
+      <el-menu-item index="/student">
+        <i class="el-icon-user"></i>
+        <span slot="title">学员管理</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
+
 <script>
 export default {
   name: "",
-  props: {},
-  components: {},
   data() {
     return {};
   },
-  computed: {},
-  watch: {},
-  methods: {
-   
-  },
-  created() {},
-  mounted() {},
-  beforeDestroy() {}
+  components: {}
 };
 </script>
-<style lang='scss' scoped>
+
+
+<style scoped>
 .el-menu{
   border-right : 0;
 }
